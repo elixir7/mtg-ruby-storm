@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic: The Gathering Tracker</title>
+    <style>
+        body {
+            margin: 20px 0;
+            /* Add top and bottom margin */
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 40px);
+            /* Adjust height to account for margins */
+            font-family: Arial, sans-serif;
+        }
+
+        .tracker {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            margin: 10px 0;
+            /* Add margin between rows */
+        }
+
+        .tracker h2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            margin: 0;
+            padding: 10px;
+            font-size: 5em;
+            color: white;
+            text-shadow: 2px 2px 5px black;
+        }
+
+
+        .buttons {
+            display: flex;
+            height: 100%;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: space-between;
+            width: 100%;
+            /* Adjust width as needed */
+            margin: 0 auto;
+            /* Center the buttons horizontally */
+        }
+
+        button {
+            flex: 1;
+            margin: 0 10px;
+            /* Add margin between buttons */
+            padding: 20px;
+            font-size: 2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+
+
+        button:active {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tracker" id="redManaTracker" style="background-image: url('red.png');">
+        <div class="buttons">
+            <button onclick="changeCount('redMana', -1)">-</button>
+            <h2><span id="redMana">0</span></h2>
+            <button onclick="changeCount('redMana', 1)">+</button>
+        </div>
+    </div>
+    <div class="tracker" id="whiteManaTracker" style="background-image: url('white.png');">
+        <div class="buttons">
+            <button onclick="changeCount('whiteMana', -1)">-</button>
+            <h2><span id="whiteMana">0</span></h2>
+            <button onclick="changeCount('whiteMana', 1)">+</button>
+        </div>
+    </div>
+    <div class="tracker" id="stormCountTracker" style="background-image: url('storm.png');">
+        <div class="buttons">
+            <button onclick="changeCount('stormCount', -1)">-</button>
+            <h2><span id="stormCount">0</span></h2>
+            <button onclick="changeCount('stormCount', 1)">+</button>
+        </div>
+    </div>
+
+    <script>
+        function changeCount(id, change) {
+            const element = document.getElementById(id);
+            let count = parseInt(element.textContent) + change;
+            if (count < 0) count = 0;
+            element.textContent = count;
+        }
+    </script>
+</body>
+
+</html>
